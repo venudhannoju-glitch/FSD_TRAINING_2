@@ -1,0 +1,21 @@
+.div1{
+    background-color: rgb(240, 248, 23);
+    /* width: 120px;
+    height: 60px; */
+    border: red 3px solid;
+    padding: 20px;
+    align-items: center;
+    align-content: center;
+
+}
+.p1{
+    font-family:'Courier New', Courier, monospace
+    
+}
+body{
+    background-color: aquamarine;
+}
+h1{
+    color:blue;
+    text-align:center;
+}
