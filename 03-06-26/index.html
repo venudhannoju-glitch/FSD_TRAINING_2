@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style> 
+body {
+  background-color: pink;
+}
+
+@media screen and (min-width: 480px) and (max-width: 768px) {
+  body {
+    background-color: lightgreen;
+  }
+}
+
+.div1 {
+  width: 100px;
+  height: 100px;
+  background: red;
+  transition: width 5s;
+  transition-delay: 2s;
+  transition-timing-function:cubic-bezier();
+}
+
+.div1:hover {
+  width: 300px;
+
+}
+.div2 {
+  width: 100px;
+  height: 100px;
+  background: blue;
+  position: relative;
+  animation: mymove 5s ;
+}
+
+@keyframes mymove {
+  from {left: 0px;border-radius: 0%;}
+  to {left: 200px;border-radius: 50%;}
+
+}
+.div3{
+    width: 100px;
+    height: 100px;
+    margin: 50px;
+    background: black;
+    transform-origin: 25%;
+    transform: rotate(25deg);
+}
+
+</style>
+</head>
+<body>
+
+
+
+<p> transition </p>
+
+<div class="div1"></div>
+<br>
+<p>Animation</p>
+<div class="div2"></div>
+<br>
+<p>transform</p>
+<div class="div3"></div>
+
+</body>
+</html>
