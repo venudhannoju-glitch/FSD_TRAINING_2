@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flexbox Demo</title>
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#111b33;
+      --accent:#4cc9f0;
+      --text:#e6edf7;
+      --muted:#a9b4c7;
+      --border:rgba(255,255,255,.12);
+    }
+
+    *{ box-sizing:border-box; }
+
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:linear-gradient(180deg, #081026, var(--bg));
+      color:var(--text);
+      padding:28px;
+    }
+
+    h1{
+      margin:0 0 10px;
+      font-size:28px;
+      letter-spacing:.3px;
+    }
+
+    .subtitle{
+      margin:0 0 22px;
+      color:var(--muted);
+      line-height:1.4;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap:18px;
+    }
+
+    .card{
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,.25);
+    }
+
+    .card h2{
+      font-size:16px;
+      margin:0 0 12px;
+      color:#dbe7ff;
+    }
+
+    .demo{
+      min-height:130px;
+      padding:12px;
+      border-radius:12px;
+      background:rgba(0,0,0,.18);
+      border:1px dashed rgba(255,255,255,.18);
+      display:flex;
+      align-items:stretch;
+    }
+
+    .row-gap{ gap:12px; }
+
+    .box{
+      width:68px;
+      min-height:46px;
+      border-radius:10px;
+      border:1px solid rgba(255,255,255,.15);
+      background:linear-gradient(180deg, rgba(76,201,240,.35), rgba(76,201,240,.12));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:700;
+    }
+
+    .box.big{ width:92px; min-height:62px; background:linear-gradient(180deg, rgba(255,200,0,.28), rgba(255,200,0,.10)); }
+
+    /* 1) flex-direction */
+    .fd{ flex-direction:row; }
+    .fd .box:nth-child(1){ height:40px; }
+    .fd .box:nth-child(2){ height:70px; }
+    .fd .box:nth-child(3){ height:55px; }
+
+    /* 2) justify-content */
+    .jc{ justify-content:flex-start; gap:12px; }
+
+    .jc.center{ justify-content:center; }
+    .jc.end{ justify-content:flex-end; }
+    .jc.space-between{ justify-content:space-between; }
+
+    /* 3) align-items */
+    .ai{ height:140px; align-items:flex-start; gap:12px; }
+    .ai.center{ align-items:center; }
+    .ai.end{ align-items:flex-end; }
+
+    /* 4) flex-wrap */
+    .wrap{ flex-wrap:wrap; gap:12px; }
+
+    /* 5) flex:grow/shrink */
+    .grow{ gap:12px; }
+    .grow .b1{ flex: 1 1 120px; }
+    .grow .b2{ flex: 2 1 120px; }
+    .grow .b3{ flex: 3 1 120px; }
+
+    /* 6) align-content (needs wrap + extra height) */
+    .ac{
+      height:170px;
+      flex-wrap:wrap;
+      gap:12px;
+      align-content:flex-start;
+    }
+    .ac.center{ align-content:center; }
+    .ac.end{ align-content:flex-end; }
+  </style>
+</head>
+<body>
+  <h1>Flexbox: Layout Cheatsheet</h1>
+  <p class="subtitle">Each card shows a different flexbox property (direction, justify-content, align-items, wrap, grow/shrink, align-content).</p>
+
+  <div class="grid">
+    <section class="card">
+      <h2>1) flex-direction (row)</h2>
+      <div class="demo fd" style="justify-content:flex-start; gap:12px;">
+        <div class="box">A</div>
+        <div class="box">B</div>
+        <div class="box">C</div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>2) justify-content</h2>
+      <div class="demo jc" style="margin-bottom:12px;">
+        <div class="box big">Start</div>
+        <div class="box">1</div>
+        <div class="box">2</div>
+      </div>
+      <div class="demo jc center" style="margin-bottom:12px;">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box big">Center</div>
+      </div>
+      <div class="demo jc space-between">
+        <div class="box">Left</div>
+        <div class="box">Middle</div>
+        <div class="box">Right</div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>3) align-items</h2>
+      <div class="demo ai" style="gap:12px;">
+        <div class="box">Top</div>
+        <div class="box big" style="height:70px; align-self:flex-start;">Tall</div>
+        <div class="box">X</div>
+      </div>
+      <div class="demo ai center" style="margin-top:12px; gap:12px; align-items:center;">
+        <div class="box">Center</div>
+        <div class="box big" style="height:70px;">Tall</div>
+        <div class="box">Y</div>
+      </div>
+      <div class="demo ai end" style="margin-top:12px; gap:12px; align-items:flex-end;">
+        <div class="box">Bottom</div>
+        <div class="box big" style="height:70px;">Tall</div>
+        <div class="box">Z</div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>4) flex-wrap</h2>
+      <div class="demo wrap" style="justify-content:flex-start;">
+        <div class="box">1</div><div class="box">2</div><div class="box">3</div><div class="box">4</div>
+        <div class="box">5</div><div class="box">6</div><div class="box">7</div><div class="box">8</div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>5) flex: grow / shrink</h2>
+      <div class="demo grow" style="justify-content:flex-start;">
+        <div class="box b1">1x</div>
+        <div class="box b2">2x</div>
+        <div class="box b3">3x</div>
+      </div>
+      <p class="subtitle" style="margin-top:10px; font-size:13px;">Try resizing the window: the widths change according to flex-grow.</p>
+    </section>
+
+    <section class="card">
+      <h2>6) align-content (with wrap)</h2>
+      <div class="demo ac" style="justify-content:flex-start;">
+        <div class="box">A</div><div class="box">B</div><div class="box">C</div><div class="box">D</div>
+        <div class="box">E</div><div class="box">F</div><div class="box">G</div><div class="box">H</div>
+        <div class="box">I</div><div class="box">J</div>
+      </div>
+      <div class="demo ac center" style="justify-content:flex-start; margin-top:12px;">
+        <div class="box">1</div><div class="box">2</div><div class="box">3</div><div class="box">4</div>
+        <div class="box">5</div><div class="box">6</div><div class="box">7</div><div class="box">8</div>
+        <div class="box">9</div><div class="box">10</div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
+
