@@ -1,0 +1,43 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.hero {
+    background: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)),
+    url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 120px 0;
+}
+
+.feature-card img {
+    height: 200px;
+    object-fit: cover;
+}
+
+.footer {
+    background: #212529;
+    color: white;
+    padding: 20px;
+}
+
+.profile-img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+}
+
+.dark-mode {
+    background: #121212 !important;
+    color: white !important;
+}
+
+.dark-mode .card {
+    background: #1f1f1f;
+    color: white;
+}
+
+.dark-mode .table {
+    color: white;
+}
